@@ -1,0 +1,14 @@
+C:\Users\Александр\source\repos\Curs_project_Govorov\Curs_project_Govorov\Debug\Curs_project_Govorov.vcxprojAssemblyReference.cache
+C:\Users\Александр\source\repos\Curs_project_Govorov\Curs_project_Govorov\Debug\Curs_project_Govorov.vcxproj.GenerateResource.cache
+C:\Users\Александр\source\repos\Curs_project_Govorov\Curs_project_Govorov\Debug\CursprojectGovorov.Student.resources
+C:\Users\Александр\source\repos\Curs_project_Govorov\Curs_project_Govorov\Debug\CursprojectGovorov.Student_grant.resources
+C:\Users\Александр\source\repos\Curs_project_Govorov\Curs_project_Govorov\Debug\CursprojectGovorov.Student_avg_mark.resources
+C:\Users\Александр\source\repos\Curs_project_Govorov\Curs_project_Govorov\Debug\CursprojectGovorov.Student_unsuccessful.resources
+C:\Users\Александр\source\repos\Curs_project_Govorov\Curs_project_Govorov\Debug\CursprojectGovorov.Input_mark.resources
+C:\Users\Александр\source\repos\Curs_project_Govorov\Curs_project_Govorov\Debug\CursprojectGovorov.Group_avg_mark.resources
+C:\Users\Александр\source\repos\Curs_project_Govorov\Curs_project_Govorov\Debug\CursprojectGovorov.Subject_avg_mark.resources
+C:\Users\Александр\source\repos\Curs_project_Govorov\Curs_project_Govorov\Debug\CursprojectGovorov.Chair.resources
+C:\Users\Александр\source\repos\Curs_project_Govorov\Curs_project_Govorov\Debug\CursprojectGovorov.Faculties.resources
+C:\Users\Александр\source\repos\Curs_project_Govorov\Curs_project_Govorov\Debug\CursprojectGovorov.Group_student.resources
+C:\Users\Александр\source\repos\Curs_project_Govorov\Curs_project_Govorov\Debug\CursprojectGovorov.Specialties.resources
+C:\Users\Александр\source\repos\Curs_project_Govorov\Curs_project_Govorov\Debug\CursprojectGovorov.Subject.resources
