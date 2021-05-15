@@ -79,6 +79,9 @@ namespace CursprojectGovorov {
 		void InitializeComponent(void)
 		{
 			this->dataGridViewStudent = (gcnew System::Windows::Forms::DataGridView());
+			this->id = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Name_faculty = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Chair = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->textBoxFaculties = (gcnew System::Windows::Forms::TextBox());
 			this->buttonChange = (gcnew System::Windows::Forms::Button());
@@ -86,9 +89,6 @@ namespace CursprojectGovorov {
 			this->buttonAdd = (gcnew System::Windows::Forms::Button());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->domainUpDownFaculties = (gcnew System::Windows::Forms::DomainUpDown());
-			this->id = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Name_faculty = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Chair = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewStudent))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -105,79 +105,8 @@ namespace CursprojectGovorov {
 			this->dataGridViewStudent->ReadOnly = true;
 			this->dataGridViewStudent->Size = System::Drawing::Size(594, 344);
 			this->dataGridViewStudent->TabIndex = 0;
-			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(13, 73);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(68, 18);
-			this->label1->TabIndex = 2;
-			this->label1->Text = L"Кафедра";
-			// 
-			// textBoxFaculties
-			// 
-			this->textBoxFaculties->Font = (gcnew System::Drawing::Font(L"Montserrat", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->textBoxFaculties->Location = System::Drawing::Point(114, 67);
-			this->textBoxFaculties->Name = L"textBoxFaculties";
-			this->textBoxFaculties->Size = System::Drawing::Size(120, 26);
-			this->textBoxFaculties->TabIndex = 3;
-			// 
-			// buttonChange
-			// 
-			this->buttonChange->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
-			this->buttonChange->Font = (gcnew System::Drawing::Font(L"Roboto", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->buttonChange->Location = System::Drawing::Point(382, 62);
-			this->buttonChange->Name = L"buttonChange";
-			this->buttonChange->Size = System::Drawing::Size(83, 29);
-			this->buttonChange->TabIndex = 7;
-			this->buttonChange->Text = L"Изменить";
-			this->buttonChange->UseVisualStyleBackColor = true;
-			// 
-			// buttonDelete
-			// 
-			this->buttonDelete->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
-			this->buttonDelete->Font = (gcnew System::Drawing::Font(L"Roboto", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->buttonDelete->Location = System::Drawing::Point(493, 62);
-			this->buttonDelete->Name = L"buttonDelete";
-			this->buttonDelete->Size = System::Drawing::Size(83, 29);
-			this->buttonDelete->TabIndex = 6;
-			this->buttonDelete->Text = L"Удалить";
-			this->buttonDelete->UseVisualStyleBackColor = true;
-			// 
-			// buttonAdd
-			// 
-			this->buttonAdd->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
-			this->buttonAdd->Font = (gcnew System::Drawing::Font(L"Roboto", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->buttonAdd->Location = System::Drawing::Point(273, 62);
-			this->buttonAdd->Name = L"buttonAdd";
-			this->buttonAdd->Size = System::Drawing::Size(83, 29);
-			this->buttonAdd->TabIndex = 5;
-			this->buttonAdd->Text = L"Добавить";
-			this->buttonAdd->UseVisualStyleBackColor = true;
-			// 
-			// label2
-			// 
-			this->label2->AutoSize = true;
-			this->label2->Location = System::Drawing::Point(13, 28);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(77, 18);
-			this->label2->TabIndex = 8;
-			this->label2->Text = L"Факультет";
-			// 
-			// domainUpDownFaculties
-			// 
-			this->domainUpDownFaculties->Location = System::Drawing::Point(114, 23);
-			this->domainUpDownFaculties->Name = L"domainUpDownFaculties";
-			this->domainUpDownFaculties->ReadOnly = true;
-			this->domainUpDownFaculties->Size = System::Drawing::Size(120, 23);
-			this->domainUpDownFaculties->Sorted = true;
-			this->domainUpDownFaculties->TabIndex = 9;
-			this->domainUpDownFaculties->Text = L"Все";
+			this->dataGridViewStudent->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyFormChair::dataGridViewStudent_CellClick);
+			this->dataGridViewStudent->RowEnter += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyFormChair::dataGridViewStudent_RowEnter);
 			// 
 			// id
 			// 
@@ -197,6 +126,83 @@ namespace CursprojectGovorov {
 			this->Chair->HeaderText = L"Кафедра";
 			this->Chair->Name = L"Chair";
 			this->Chair->ReadOnly = true;
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(13, 73);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(68, 18);
+			this->label1->TabIndex = 2;
+			this->label1->Text = L"Кафедра";
+			// 
+			// textBoxFaculties
+			// 
+			this->textBoxFaculties->Font = (gcnew System::Drawing::Font(L"Montserrat", 9.749999F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->textBoxFaculties->Location = System::Drawing::Point(114, 70);
+			this->textBoxFaculties->Name = L"textBoxFaculties";
+			this->textBoxFaculties->Size = System::Drawing::Size(120, 23);
+			this->textBoxFaculties->TabIndex = 3;
+			// 
+			// buttonChange
+			// 
+			this->buttonChange->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
+			this->buttonChange->Font = (gcnew System::Drawing::Font(L"Roboto", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->buttonChange->Location = System::Drawing::Point(382, 62);
+			this->buttonChange->Name = L"buttonChange";
+			this->buttonChange->Size = System::Drawing::Size(83, 29);
+			this->buttonChange->TabIndex = 7;
+			this->buttonChange->Text = L"Изменить";
+			this->buttonChange->UseVisualStyleBackColor = true;
+			this->buttonChange->Click += gcnew System::EventHandler(this, &MyFormChair::buttonChange_Click);
+			// 
+			// buttonDelete
+			// 
+			this->buttonDelete->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
+			this->buttonDelete->Font = (gcnew System::Drawing::Font(L"Roboto", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->buttonDelete->Location = System::Drawing::Point(493, 62);
+			this->buttonDelete->Name = L"buttonDelete";
+			this->buttonDelete->Size = System::Drawing::Size(83, 29);
+			this->buttonDelete->TabIndex = 6;
+			this->buttonDelete->Text = L"Удалить";
+			this->buttonDelete->UseVisualStyleBackColor = true;
+			this->buttonDelete->Click += gcnew System::EventHandler(this, &MyFormChair::buttonDelete_Click);
+			// 
+			// buttonAdd
+			// 
+			this->buttonAdd->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
+			this->buttonAdd->Font = (gcnew System::Drawing::Font(L"Roboto", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->buttonAdd->Location = System::Drawing::Point(273, 62);
+			this->buttonAdd->Name = L"buttonAdd";
+			this->buttonAdd->Size = System::Drawing::Size(83, 29);
+			this->buttonAdd->TabIndex = 5;
+			this->buttonAdd->Text = L"Добавить";
+			this->buttonAdd->UseVisualStyleBackColor = true;
+			this->buttonAdd->Click += gcnew System::EventHandler(this, &MyFormChair::buttonAdd_Click);
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Location = System::Drawing::Point(13, 28);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(77, 18);
+			this->label2->TabIndex = 8;
+			this->label2->Text = L"Факультет";
+			// 
+			// domainUpDownFaculties
+			// 
+			this->domainUpDownFaculties->Location = System::Drawing::Point(114, 23);
+			this->domainUpDownFaculties->Name = L"domainUpDownFaculties";
+			this->domainUpDownFaculties->ReadOnly = true;
+			this->domainUpDownFaculties->Size = System::Drawing::Size(120, 23);
+			this->domainUpDownFaculties->Sorted = true;
+			this->domainUpDownFaculties->TabIndex = 9;
+			this->domainUpDownFaculties->Text = L"Все";
+			this->domainUpDownFaculties->SelectedItemChanged += gcnew System::EventHandler(this, &MyFormChair::domainUpDownFaculties_SelectedItemChanged);
 			// 
 			// MyFormChair
 			// 
@@ -221,6 +227,7 @@ namespace CursprojectGovorov {
 			this->ShowIcon = false;
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Факультеты";
+			this->Load += gcnew System::EventHandler(this, &MyFormChair::MyFormChair_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewStudent))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -228,5 +235,13 @@ namespace CursprojectGovorov {
 		}
 #pragma endregion
 
-	};
+private: System::Void dataGridViewStudent_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
+private: System::Void buttonAdd_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void buttonChange_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void buttonDelete_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void MyFormChair_Load(System::Object^ sender, System::EventArgs^ e);
+private: System::Void dataGridViewStudent_RowEnter(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
+private: System::Void domainUpDownFaculties_SelectedItemChanged(System::Object^ sender, System::EventArgs^ e);
+private: System::Void ClearTextBox();
+};
 }

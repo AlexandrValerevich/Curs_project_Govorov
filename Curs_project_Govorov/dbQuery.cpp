@@ -2,7 +2,7 @@
 
 String^ StringConnection()
 {
-	return "provider=Microsoft.ACE.OLEDB.12.0;Data Source=kuafer.accdb";
+	return "provider=Microsoft.ACE.OLEDB.12.0;Data Source=University.accdb";
 }
 
 String^ SelectID(
