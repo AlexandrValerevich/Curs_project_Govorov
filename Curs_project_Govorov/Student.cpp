@@ -12,6 +12,7 @@
 #include "Subject_avg_mark.h"
 #include "Unsuccessful_mark.h"
 #include "Subject.h"
+#include "SubjectList.h"
 
 /*---------------------------------------------------ÊÍÎÏÊÈ ÏÅÐÅÊËÞ×ÅÍÈß ÌÅÆÄÓ ÔÎÐÌÀÌÈ-------------------------------------------------*/
 
@@ -98,9 +99,16 @@ System::Void CursprojectGovorov::MyFormStudent::GroupsToolStripMenuItem_Click(Sy
     return System::Void();
 }
 
-System::Void CursprojectGovorov::MyFormStudent::SubjectToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+System::Void CursprojectGovorov::MyFormStudent::SubjectByGroupToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
 {
     MyFormSubject^ form = gcnew MyFormSubject(this);
+    form->Show();
+    return System::Void();
+}
+
+System::Void CursprojectGovorov::MyFormStudent::SubjectListToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e)
+{
+    MyFormSubjectList^ form = gcnew MyFormSubjectList(this);
     form->Show();
     return System::Void();
 }

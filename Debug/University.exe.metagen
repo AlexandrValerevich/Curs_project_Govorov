@@ -9,6 +9,7 @@
   CursprojectGovorov.Student_grant.resources - Embedded, ContainedInManifestFile, 
   CursprojectGovorov.Student_unsuccessful.resources - Embedded, ContainedInManifestFile, 
   CursprojectGovorov.Subject.resources - Embedded, ContainedInManifestFile, 
+  CursprojectGovorov.SubjectList.resources - Embedded, ContainedInManifestFile, 
   CursprojectGovorov.Subject_avg_mark.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
 Assembly University, Version=0.0.*, Culture=Инвариантный язык (Инвариантная страна): 
@@ -74,6 +75,10 @@ Class CursprojectGovorov.MyFormUnsuccessfuAvgMark: AutoLayout, AnsiClass, Class,
     Void .ctor(System.Windows.Forms.Form): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class CursprojectGovorov.MyFormSubject: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(System.Windows.Forms.Form): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+Class CursprojectGovorov.MyFormSubjectList: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(System.Windows.Forms.Form): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

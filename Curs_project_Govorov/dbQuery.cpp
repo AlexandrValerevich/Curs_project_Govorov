@@ -33,6 +33,9 @@ String^ SelectID(
 
 	auto dbReaderID = dbCommand->ExecuteReader();
 
+	if (!dbReaderID->HasRows)
+		return nullptr;
+
 	dbReaderID->Read();
 	id = dbReaderID[0]->ToString();
 

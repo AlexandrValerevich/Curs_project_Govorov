@@ -12,3 +12,4 @@ C:\Users\Александр\source\repos\Curs_project_Govorov\Curs_project_Govor
 C:\Users\Александр\source\repos\Curs_project_Govorov\Curs_project_Govorov\Debug\CursprojectGovorov.Group_student.resources
 C:\Users\Александр\source\repos\Curs_project_Govorov\Curs_project_Govorov\Debug\CursprojectGovorov.Specialties.resources
 C:\Users\Александр\source\repos\Curs_project_Govorov\Curs_project_Govorov\Debug\CursprojectGovorov.Subject.resources
+C:\Users\Александр\source\repos\Curs_project_Govorov\Curs_project_Govorov\Debug\CursprojectGovorov.SubjectList.resources

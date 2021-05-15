@@ -111,6 +111,10 @@ private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::ToolStripMenuItem^ GroupsToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ SubjectToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ ExitToolStripMenuItem;
+	private: System::Windows::Forms::ToolStripMenuItem^ SubjectListToolStripMenuItem;
+
+	private: System::Windows::Forms::ToolStripMenuItem^ SubjectByGroupToolStripMenuItem;
+
 
 
 	private:
@@ -163,6 +167,8 @@ private: System::Windows::Forms::Button^ button1;
 			this->SpecialityToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->GroupsToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->SubjectToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->SubjectListToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->SubjectByGroupToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ExitToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewStudent))->BeginInit();
 			this->menuStrip1->SuspendLayout();
@@ -491,10 +497,27 @@ private: System::Windows::Forms::Button^ button1;
 			// 
 			// SubjectToolStripMenuItem
 			// 
+			this->SubjectToolStripMenuItem->DropDownItems->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(2) {
+				this->SubjectListToolStripMenuItem,
+					this->SubjectByGroupToolStripMenuItem
+			});
 			this->SubjectToolStripMenuItem->Name = L"SubjectToolStripMenuItem";
 			this->SubjectToolStripMenuItem->Size = System::Drawing::Size(180, 22);
 			this->SubjectToolStripMenuItem->Text = L"Предметы";
-			this->SubjectToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyFormInputMarks::SubjectToolStripMenuItem_Click);
+			// 
+			// SubjectListToolStripMenuItem
+			// 
+			this->SubjectListToolStripMenuItem->Name = L"SubjectListToolStripMenuItem";
+			this->SubjectListToolStripMenuItem->Size = System::Drawing::Size(198, 22);
+			this->SubjectListToolStripMenuItem->Text = L"Список предметов";
+			this->SubjectListToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyFormInputMarks::SubjectListToolStripMenuItem_Click);
+			// 
+			// SubjectByGroupToolStripMenuItem
+			// 
+			this->SubjectByGroupToolStripMenuItem->Name = L"SubjectByGroupToolStripMenuItem";
+			this->SubjectByGroupToolStripMenuItem->Size = System::Drawing::Size(198, 22);
+			this->SubjectByGroupToolStripMenuItem->Text = L"Предметы по группам";
+			this->SubjectByGroupToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyFormInputMarks::SubjectByGroupToolStripMenuItem_Click);
 			// 
 			// ExitToolStripMenuItem
 			// 
@@ -548,7 +571,7 @@ private: System::Windows::Forms::Button^ button1;
 	private: System::Void buttonChange_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void buttonDelete_Click(System::Object^ sender, System::EventArgs^ e);
 	private: System::Void MyFormInputMarks_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
-	private: System::Void SubjectToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
+
 
 
 private: System::Void ListStudentToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
@@ -564,5 +587,8 @@ private: System::Void ChairToolStripMenuItem_Click(System::Object^ sender, Syste
 private: System::Void SpecialityToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void GroupsToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void ExitToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
+
+private: System::Void SubjectByGroupToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void SubjectListToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }

@@ -125,6 +125,7 @@
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="Student_unsuccessful.cpp" />
     <ClCompile Include="Subject.cpp" />
+    <ClCompile Include="SubjectList.cpp" />
     <ClCompile Include="Subject_avg_mark.cpp" />
     <ClCompile Include="Unsuccessful_mark.cpp" />
   </ItemGroup>
@@ -170,6 +171,9 @@
     <ClInclude Include="Subject.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="SubjectList.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="Subject_avg_mark.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -210,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Subject.resx">
       <DependentUpon>Subject.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SubjectList.resx">
+      <DependentUpon>SubjectList.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Subject_avg_mark.resx">
       <DependentUpon>Subject_avg_mark.h</DependentUpon>
