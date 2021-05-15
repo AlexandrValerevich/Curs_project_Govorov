@@ -147,6 +147,37 @@ bool InsertRow(
 	return false;
 }
 
+bool InsertRow(
+	OleDbConnection^ dbConnection,
+	String^ TABLE,
+	String^ COLUMN,
+	String^ SELECT,
+	String^ FROM,
+	String^ WHERE)
+{
+	String^ query = "INSERT INTO " + TABLE + " ( " + COLUMN + " ) " + " SELECT " + SELECT + " FROM " + FROM + " WHERE " + WHERE + " ;";
+	auto dbCommand = gcnew OleDbCommand(query, dbConnection);
+
+	try
+	{
+		if (dbCommand->ExecuteNonQuery() == 1) {
+			return true;
+		}
+		return false;
+	}
+	catch (const std::exception& ex)
+	{
+		string message = ex.what();
+		String^ Message = "";
+		for (auto it : message) {
+			Message += it;
+		}
+		MessageBox::Show(Message, "Внимание!");
+	}
+
+	return false;
+}
+
 bool UpdateRow(
 	OleDbConnection^ dbConnection,
 	String^ TABLE,

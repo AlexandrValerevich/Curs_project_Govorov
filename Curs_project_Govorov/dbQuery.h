@@ -17,6 +17,7 @@ String^ SelectID(
 	String^ SELECT_ID, 
 	String^ FROM, 
 	String^ WHERE);
+
 /*¬озвращает ссылку на строки которые возвращены из таблицы*/
 OleDbDataReader^ SelectRow(
 	OleDbConnection^ dbConnection,
@@ -26,24 +27,37 @@ OleDbDataReader^ SelectRow(
 	String^ ORDER_BY = nullptr,
 	String^ GROUP_BY = nullptr,
 	String^ HAVING = nullptr);
+
 /*¬озвращает true если запрос выполнен успешно*/
 bool InsertRow(
 	OleDbConnection^ dbConnection,
 	String^ TABLE,
 	String^ COLUMN,
 	String^ VALUES);
+
 /*¬озвращает true если запрос выполнен успешно*/
 bool InsertRow(
 	OleDbConnection^ dbConnection,
 	String^ TABLE,
 	Array^  COLUMN,
 	Array^ VALUES);
+
+/*¬озвращает true если запрос выполнен успешно*/
+bool InsertRow(
+	OleDbConnection^ dbConnection,
+	String^ TABLE,
+	String^ COLUMN,
+	String^ SELECT,
+	String^ FROM,
+	String^ WHERE);
+
 /*¬озвращает true если строка успешно обновлена*/
 bool UpdateRow(
 	OleDbConnection^ dbConnection,
 	String^ TABLE,
 	String^ SET,
 	String^ WHERE);
+
 /*¬озвращает true если строка успешно удалена*/
 bool DeleteRow(
 	OleDbConnection^ dbConnection,

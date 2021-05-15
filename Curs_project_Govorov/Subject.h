@@ -240,7 +240,7 @@ namespace CursprojectGovorov {
 			this->Name = L"MyFormSubject";
 			this->ShowIcon = false;
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"Предметы";
+			this->Text = L"Предметы по группам";
 			this->Load += gcnew System::EventHandler(this, &MyFormSubject::MyFormSubject_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewSubject))->EndInit();
 			this->ResumeLayout(false);

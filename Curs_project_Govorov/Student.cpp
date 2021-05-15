@@ -123,13 +123,108 @@ System::Void CursprojectGovorov::MyFormStudent::ExitToolStripMenuItem_Click(Syst
 
 System::Void CursprojectGovorov::MyFormStudent::MyFormStudent_Load(System::Object^ sender, System::EventArgs^ e)
 {
+    dataGridViewStudent->Rows->Clear();
+
+    String^ connectionString = StringConnection(); //строка подключения
+    OleDbConnection^ dbConnection = gcnew OleDbConnection(connectionString);
+
+    dbConnection->Open();//открываем соединение
+
+    String^ SELECT = "student_id, student_name, student_surname, student_patronymic, group_name, student_record_book, student_address";
+    String^ FROM = "student INNER JOIN group_t ON student.group_id = group_t.group_id";
+
+    OleDbDataReader^ dbReader = SelectRow(dbConnection, SELECT, FROM); //вызов предыдущей команды
+
+    while (dbReader->Read())
+    {
+        dataGridViewStudent->Rows->Add(
+            dbReader[0],
+            dbReader[1],
+            dbReader[2]);//заносим строки в таблицу
+    }
+
+    //закрываем соединения
+    dbReader->Close();
+
+    if (domainUpDownGroup->Items->Count == 1) {
+        SELECT = "group_name";
+        FROM = "group_t";
+
+        dbReader = SelectRow(dbConnection, SELECT, FROM);
+
+        while (dbReader->Read())
+            domainUpDownGroup->Items->Add(dbReader[0]);
+
+        //закрываем соединения
+        dbReader->Close();
+    }
+    domainUpDownGroup->Text = domainUpDownGroup->Items[0]->ToString();
+
+    //Закрываем соединение
+    dbConnection->Close();
     return System::Void();
 }
 
 System::Void CursprojectGovorov::MyFormStudent::SelectDataGridItem(System::Object^ sender, System::EventArgs^ e)
 {
+    if (dataGridViewStudent->SelectedRows->Count == 0)
+        return;
+
+    int index = dataGridViewStudent->SelectedRows[0]->Index; //берем индекс первой выбранной строки
+
+    if (dataGridViewStudent->Rows->Count - 1 == index) //проверяем чтобы это не юыла последняя строка
+    {
+        ClearTextBox(); //очистка полей ввода
+        return;
+    }
+
+    textBoxId->Text         = dataGridViewStudent->Rows[index]->Cells[0]->Value->ToString();
+    textBoxName->Text       = dataGridViewStudent->Rows[index]->Cells[1]->Value->ToString();
+    textBoxSurname->Text    = dataGridViewStudent->Rows[index]->Cells[2]->Value->ToString();
+    textBoxPatronymic->Text = dataGridViewStudent->Rows[index]->Cells[3]->Value->ToString();
+    domainUpDownGroup->Text = dataGridViewStudent->Rows[index]->Cells[4]->Value->ToString();
+    textBoxRecordBook->Text = dataGridViewStudent->Rows[index]->Cells[5]->Value->ToString();
+    textBoxAddress->Text    = dataGridViewStudent->Rows[index]->Cells[6]->Value->ToString();
     return System::Void();
 }
+
+System::Void CursprojectGovorov::MyFormStudent::dataGridViewStudent_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e)
+{
+    return System::Void();
+}
+
+System::Void CursprojectGovorov::MyFormStudent::ClearTextBox()
+{
+    textBoxId->Text         = nullptr;
+    textBoxName->Text       = nullptr;
+    textBoxSurname->Text    = nullptr;
+    textBoxPatronymic->Text = nullptr;
+    domainUpDownGroup->Text = domainUpDownGroup->Items[0]->ToString();
+    textBoxRecordBook->Text = nullptr;
+    textBoxAddress->Text    = nullptr;
+    return System::Void();
+}
+
+System::Void CursprojectGovorov::MyFormStudent::domainUpDownGroup_SelectedItemChanged(System::Object^ sender, System::EventArgs^ e)
+{
+    int index = dataGridViewStudent->SelectedCells[0]->RowIndex;
+
+    auto rows = dataGridViewStudent->Rows;
+    int count_row = rows->Count - 1;
+    String^ selecting_rows = domainUpDownGroup->Text;
+
+    for (int i = 0; i < count_row; i++)
+        rows[i]->Visible = true;
+
+    if (selecting_rows == "Все")
+        return;
+
+    for (int i = 0; i < count_row; i++)
+        if (rows[i]->Cells["Group"]->Value->ToString() != selecting_rows && index != i)
+            rows[i]->Visible = false;
+    return System::Void();
+}
+
 
 /*------------------------------КНОПКИ ДОБАВЛЕНИЯ, УДАЛЕНИЯ, ИЗМЕНЕНИЯ---------------------------------------------------*/
 
