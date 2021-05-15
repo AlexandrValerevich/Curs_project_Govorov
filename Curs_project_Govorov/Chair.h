@@ -46,11 +46,14 @@ namespace CursprojectGovorov {
 			}
 
 		}
-	private: System::Windows::Forms::DataGridView^ dataGridViewStudent;
+	private: System::Windows::Forms::DataGridView^ dataGridViewChair;
+	protected:
+
 	protected:
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Name_student;
 	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::TextBox^ textBoxFaculties;
+	private: System::Windows::Forms::TextBox^ textBoxChair;
+
 	private: System::Windows::Forms::Button^ buttonChange;
 	private: System::Windows::Forms::Button^ buttonDelete;
 
@@ -78,35 +81,35 @@ namespace CursprojectGovorov {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->dataGridViewStudent = (gcnew System::Windows::Forms::DataGridView());
+			this->dataGridViewChair = (gcnew System::Windows::Forms::DataGridView());
 			this->id = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Name_faculty = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Chair = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->textBoxFaculties = (gcnew System::Windows::Forms::TextBox());
+			this->textBoxChair = (gcnew System::Windows::Forms::TextBox());
 			this->buttonChange = (gcnew System::Windows::Forms::Button());
 			this->buttonDelete = (gcnew System::Windows::Forms::Button());
 			this->buttonAdd = (gcnew System::Windows::Forms::Button());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->domainUpDownFaculties = (gcnew System::Windows::Forms::DomainUpDown());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewStudent))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewChair))->BeginInit();
 			this->SuspendLayout();
 			// 
-			// dataGridViewStudent
+			// dataGridViewChair
 			// 
-			this->dataGridViewStudent->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
-			this->dataGridViewStudent->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridViewStudent->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
+			this->dataGridViewChair->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
+			this->dataGridViewChair->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridViewChair->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
 				this->id,
 					this->Name_faculty, this->Chair
 			});
-			this->dataGridViewStudent->Location = System::Drawing::Point(12, 124);
-			this->dataGridViewStudent->Name = L"dataGridViewStudent";
-			this->dataGridViewStudent->ReadOnly = true;
-			this->dataGridViewStudent->Size = System::Drawing::Size(594, 344);
-			this->dataGridViewStudent->TabIndex = 0;
-			this->dataGridViewStudent->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyFormChair::dataGridViewStudent_CellClick);
-			this->dataGridViewStudent->RowEnter += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyFormChair::dataGridViewStudent_RowEnter);
+			this->dataGridViewChair->Location = System::Drawing::Point(12, 124);
+			this->dataGridViewChair->Name = L"dataGridViewChair";
+			this->dataGridViewChair->ReadOnly = true;
+			this->dataGridViewChair->Size = System::Drawing::Size(594, 344);
+			this->dataGridViewChair->TabIndex = 0;
+			this->dataGridViewChair->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyFormChair::dataGridViewChair_CellClick);
+			this->dataGridViewChair->RowEnter += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyFormChair::dataGridViewChair_RowEnter);
 			// 
 			// id
 			// 
@@ -136,14 +139,14 @@ namespace CursprojectGovorov {
 			this->label1->TabIndex = 2;
 			this->label1->Text = L"Кафедра";
 			// 
-			// textBoxFaculties
+			// textBoxChair
 			// 
-			this->textBoxFaculties->Font = (gcnew System::Drawing::Font(L"Montserrat", 9.749999F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->textBoxChair->Font = (gcnew System::Drawing::Font(L"Montserrat", 9.749999F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->textBoxFaculties->Location = System::Drawing::Point(114, 70);
-			this->textBoxFaculties->Name = L"textBoxFaculties";
-			this->textBoxFaculties->Size = System::Drawing::Size(120, 23);
-			this->textBoxFaculties->TabIndex = 3;
+			this->textBoxChair->Location = System::Drawing::Point(114, 70);
+			this->textBoxChair->Name = L"textBoxChair";
+			this->textBoxChair->Size = System::Drawing::Size(120, 23);
+			this->textBoxChair->TabIndex = 3;
 			// 
 			// buttonChange
 			// 
@@ -195,10 +198,11 @@ namespace CursprojectGovorov {
 			// 
 			// domainUpDownFaculties
 			// 
+			this->domainUpDownFaculties->Items->Add(L"Все");
 			this->domainUpDownFaculties->Location = System::Drawing::Point(114, 23);
 			this->domainUpDownFaculties->Name = L"domainUpDownFaculties";
 			this->domainUpDownFaculties->ReadOnly = true;
-			this->domainUpDownFaculties->Size = System::Drawing::Size(120, 23);
+			this->domainUpDownFaculties->Size = System::Drawing::Size(242, 23);
 			this->domainUpDownFaculties->Sorted = true;
 			this->domainUpDownFaculties->TabIndex = 9;
 			this->domainUpDownFaculties->Text = L"Все";
@@ -214,9 +218,9 @@ namespace CursprojectGovorov {
 			this->Controls->Add(this->buttonChange);
 			this->Controls->Add(this->buttonDelete);
 			this->Controls->Add(this->buttonAdd);
-			this->Controls->Add(this->textBoxFaculties);
+			this->Controls->Add(this->textBoxChair);
 			this->Controls->Add(this->label1);
-			this->Controls->Add(this->dataGridViewStudent);
+			this->Controls->Add(this->dataGridViewChair);
 			this->Font = (gcnew System::Drawing::Font(L"Montserrat", 9.749999F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::SizableToolWindow;
@@ -226,21 +230,21 @@ namespace CursprojectGovorov {
 			this->Name = L"MyFormChair";
 			this->ShowIcon = false;
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"Факультеты";
+			this->Text = L"Кафедры";
 			this->Load += gcnew System::EventHandler(this, &MyFormChair::MyFormChair_Load);
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewStudent))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewChair))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
 
-private: System::Void dataGridViewStudent_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
+private: System::Void dataGridViewChair_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
 private: System::Void buttonAdd_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void buttonChange_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void buttonDelete_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void MyFormChair_Load(System::Object^ sender, System::EventArgs^ e);
-private: System::Void dataGridViewStudent_RowEnter(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
+private: System::Void dataGridViewChair_RowEnter(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
 private: System::Void domainUpDownFaculties_SelectedItemChanged(System::Object^ sender, System::EventArgs^ e);
 private: System::Void ClearTextBox();
 };
