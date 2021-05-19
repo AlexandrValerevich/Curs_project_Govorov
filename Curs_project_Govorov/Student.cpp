@@ -140,7 +140,11 @@ System::Void CursprojectGovorov::MyFormStudent::MyFormStudent_Load(System::Objec
         dataGridViewStudent->Rows->Add(
             dbReader[0],
             dbReader[1],
-            dbReader[2]);//заносим строки в таблицу
+            dbReader[2],
+            dbReader[3],
+            dbReader[4],
+            dbReader[5],
+            dbReader[6]);//заносим строки в таблицу
     }
 
     //закрываем соединения
@@ -190,6 +194,27 @@ System::Void CursprojectGovorov::MyFormStudent::SelectDataGridItem(System::Objec
 
 System::Void CursprojectGovorov::MyFormStudent::dataGridViewStudent_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e)
 {
+    if (dataGridViewStudent->SelectedRows->Count != 0)
+        return;
+
+    if (dataGridViewStudent->SelectedCells->Count == 0)
+        return;
+
+    int index = dataGridViewStudent->SelectedCells[0]->RowIndex;
+
+    if (dataGridViewStudent->Rows->Count - 1 == index) //проверяем чтобы это не юыла последняя строка
+    {
+        ClearTextBox(); //очистка полей ввода
+        return;
+    }
+
+    textBoxId->Text = dataGridViewStudent->Rows[index]->Cells[0]->Value->ToString();
+    textBoxName->Text = dataGridViewStudent->Rows[index]->Cells[1]->Value->ToString();
+    textBoxSurname->Text = dataGridViewStudent->Rows[index]->Cells[2]->Value->ToString();
+    textBoxPatronymic->Text = dataGridViewStudent->Rows[index]->Cells[3]->Value->ToString();
+    domainUpDownGroup->Text = dataGridViewStudent->Rows[index]->Cells[4]->Value->ToString();
+    textBoxRecordBook->Text = dataGridViewStudent->Rows[index]->Cells[5]->Value->ToString();
+    textBoxAddress->Text = dataGridViewStudent->Rows[index]->Cells[6]->Value->ToString();
     return System::Void();
 }
 
@@ -222,6 +247,35 @@ System::Void CursprojectGovorov::MyFormStudent::domainUpDownGroup_SelectedItemCh
     for (int i = 0; i < count_row; i++)
         if (rows[i]->Cells["Group"]->Value->ToString() != selecting_rows && index != i)
             rows[i]->Visible = false;
+
+    return System::Void();
+}
+
+System::Void CursprojectGovorov::MyFormStudent::buttonUpdateGroupList_Click(System::Object^ sender, System::EventArgs^ e)
+{
+    domainUpDownGroup->Items->Clear();
+    domainUpDownGroup->Items->Add("Все");
+
+    String^ connectionString = StringConnection(); //строка подключения
+    OleDbConnection^ dbConnection = gcnew OleDbConnection(connectionString);
+
+    dbConnection->Open();//открываем соединение
+
+    String^ SELECT = "group_name";
+    String^ FROM = "group_t";
+
+    auto dbReader = SelectRow(dbConnection, SELECT, FROM);
+
+    while (dbReader->Read())
+        domainUpDownGroup->Items->Add(dbReader[0]);
+
+    //закрываем соединения
+    dbReader->Close();
+
+    domainUpDownGroup->Text = domainUpDownGroup->Items[0]->ToString();
+
+    dbConnection->Close();
+
     return System::Void();
 }
 
@@ -230,16 +284,210 @@ System::Void CursprojectGovorov::MyFormStudent::domainUpDownGroup_SelectedItemCh
 
 System::Void CursprojectGovorov::MyFormStudent::buttonAdd_Click(System::Object^ sender, System::EventArgs^ e)
 {
+    String^ student_name    = "'" + textBoxName->Text->ToString() + "'";
+    String^ student_surname = "'" + textBoxSurname->Text->ToString() + "'";
+    String^ student_patronymic = "'" + textBoxPatronymic->Text->ToString() + "'";
+    String^ student_record_book = "'" +textBoxRecordBook->Text->ToString() + "'";
+    String^ student_address = "'" + textBoxAddress->Text->ToString() + "'";
+    String^ student_group = "'" + domainUpDownGroup->Text + "'";////;
+
+    if (String::IsNullOrEmpty(student_name->Trim('\''))) {
+        MessageBox::Show("Введите имя студента!", "Внимание!");
+        textBoxName->Focus();
+        return;
+    }
+
+    if (String::IsNullOrEmpty(student_surname->Trim('\''))) {
+        MessageBox::Show("Введите фамилию студента!", "Внимание!");
+        textBoxName->Focus();
+        return;
+    }
+    
+    if (String::IsNullOrEmpty(student_patronymic->Trim('\''))) {
+        MessageBox::Show("Введите отчество студента!", "Внимание!");
+        textBoxPatronymic->Focus();
+        return;
+    }
+
+    if (String::IsNullOrEmpty(student_record_book->Trim('\''))) {
+        MessageBox::Show("Введите номер заетной книжки!", "Внимание!");
+        textBoxRecordBook->Focus();
+        return;
+    }
+
+    if (String::IsNullOrEmpty(student_address->Trim('\''))) {
+        MessageBox::Show("Введите адрес сиудента!", "Внимание!");
+        textBoxRecordBook->Focus();
+        return;
+    }
+
+    if (student_group == "'Все'") {
+        MessageBox::Show("Выберите группу!", "Внимание!");
+        domainUpDownGroup->Focus();
+        return;
+    }
+
+    String^ group_id;
+
+    String^ connectionString = StringConnection(); //строка подключения
+    OleDbConnection^ dbConnection = gcnew OleDbConnection(connectionString);
+
+    dbConnection->Open();//открываем соединение
+
+    String^ SELECT = "group_id";
+    String^ FROM = "group_t";
+    String^ WHERE = "group_name LIKE " + student_group;
+    String^ TABLE;
+    String^ COLUMN;
+    String^ VALUES;
+
+    group_id = SelectID(dbConnection, SELECT, FROM, WHERE);
+
+    TABLE = "student";
+    COLUMN = "student_name, student_surname, student_patronymic, student_record_book, student_address, group_id";
+    VALUES = 
+        student_name + ", " +
+        student_surname + ", " +
+        student_patronymic + ", " +
+        student_record_book + ", " +
+        student_address + ", " +
+        group_id;
+
+    if (!InsertRow(dbConnection, TABLE, COLUMN, VALUES))
+        MessageBox::Show("Ошибка в момент добавления!", "Внимание!");
+    else
+        MessageBox::Show("Запись успешно добавлена!");
+
+    MyFormStudent_Load(nullptr, nullptr);
+
+    //закрываем соединения
+    dbConnection->Close();
     return System::Void();
 }
 
 System::Void CursprojectGovorov::MyFormStudent::buttonChange_Click(System::Object^ sender, System::EventArgs^ e)
 {
+    if (dataGridViewStudent->SelectedRows->Count != 1) {
+        MessageBox::Show("Выберете в таблице одну строку которую хотите изменить","Внимание!");
+        return;
+    }
+
+    String^ student_id = textBoxId->Text;
+    String^ student_name = "'" + textBoxName->Text->ToString() + "'";
+    String^ student_surname = "'" + textBoxSurname->Text->ToString() + "'";
+    String^ student_patronymic = "'" + textBoxPatronymic->Text->ToString() + "'";
+    String^ student_record_book = "'" + textBoxRecordBook->Text->ToString() + "'";
+    String^ student_address = "'" + textBoxAddress->Text->ToString() + "'";
+    String^ student_group = "'" + domainUpDownGroup->Text + "'";////;
+
+    if (String::IsNullOrEmpty(student_name->Trim('\''))) {
+        MessageBox::Show("Введите имя студента!", "Внимание!");
+        textBoxName->Focus();
+        return;
+    }
+
+    if (String::IsNullOrEmpty(student_surname->Trim('\''))) {
+        MessageBox::Show("Введите фамилию студента!", "Внимание!");
+        textBoxName->Focus();
+        return;
+    }
+
+    if (String::IsNullOrEmpty(student_patronymic->Trim('\''))) {
+        MessageBox::Show("Введите отчество студента!", "Внимание!");
+        textBoxPatronymic->Focus();
+        return;
+    }
+
+    if (String::IsNullOrEmpty(student_record_book->Trim('\''))) {
+        MessageBox::Show("Введите номер заетной книжки!", "Внимание!");
+        textBoxRecordBook->Focus();
+        return;
+    }
+
+    if (String::IsNullOrEmpty(student_address->Trim('\''))) {
+        MessageBox::Show("Введите адрес сиудента!", "Внимание!");
+        textBoxRecordBook->Focus();
+        return;
+    }
+
+    if (student_group == "'Все'") {
+        MessageBox::Show("Выберите группу!", "Внимание!");
+        domainUpDownGroup->Focus();
+        return;
+    }
+
+    String^ group_id;
+
+    String^ connectionString = StringConnection(); //строка подключения
+    OleDbConnection^ dbConnection = gcnew OleDbConnection(connectionString);
+
+    dbConnection->Open();//открываем соединение
+
+    String^ SELECT = "group_id";
+    String^ FROM = "group_t";
+    String^ WHERE = "group_name LIKE " + student_group;
+    String^ TABLE;
+    String^ SET;
+
+    group_id = SelectID(dbConnection, SELECT, FROM, WHERE);
+
+    TABLE = "student";
+    SET = 
+        "student_name = " + student_name + ", " +
+        "student_surname = " + student_surname + ", " +
+        "student_patronymic = " + student_patronymic + ", " +
+        "studen_record_book = " + student_record_book + ", " +
+        "student_address = " + student_address + ", " +
+        "group_id = " + group_id;
+    WHERE = "student_id = " + student_id;
+
+    if (!UpdateRow(dbConnection, TABLE, SET, WHERE))
+        MessageBox::Show("Ошибка в момент обновления!", "Внимание!");
+    else
+        MessageBox::Show("Запись успешно обновлена!");
+
+    MyFormStudent_Load(nullptr, nullptr);
+
+    //закрываем соединения
+    dbConnection->Close();
+
+
     return System::Void();
 }
 
 System::Void CursprojectGovorov::MyFormStudent::buttonDelete_Click(System::Object^ sender, System::EventArgs^ e)
 {
+    if (dataGridViewStudent->SelectedRows->Count != 1) {
+        MessageBox::Show("Выберете в таблице одну строку которую хотите изменить", "Внимание!");
+        return;
+    }
+
+    if (dataGridViewStudent->Rows->Count - 1 == dataGridViewStudent->SelectedRows[0]->Index) //проверяем чтобы это не была не последняя строка
+    {
+        MessageBox::Show("Это не строка!", "Внимание!");
+        return;
+    }
+
+    String^ student_id = textBoxId->Text;
+
+    String^ connectionString = StringConnection(); //строка подключения
+    OleDbConnection^ dbConnection = gcnew OleDbConnection(connectionString);
+
+    dbConnection->Open();//открываем соединение
+
+    String^ FROM = "student";
+    String^ WHERE = "student_id = " + student_id;
+
+
+    if (!DeleteRow(dbConnection, FROM, WHERE))
+        MessageBox::Show("Ошибка в момент удаления!", "Внимание!");
+    else
+        MessageBox::Show("Запись успешно удалена!");
+
+    MyFormStudent_Load(nullptr, nullptr);
+
+    //закрываем соединения
+    dbConnection->Close();
     return System::Void();
 }
 

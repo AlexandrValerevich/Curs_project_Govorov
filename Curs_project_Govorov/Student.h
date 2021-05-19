@@ -137,6 +137,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ SubjectToolStripMenuItem;
 private: System::Windows::Forms::ToolStripMenuItem^ SubjectListToolStripMenuItem;
 
 private: System::Windows::Forms::ToolStripMenuItem^ SubjectByGroupToolStripMenuItem;
+private: System::Windows::Forms::Button^ buttonUpdateGroupList;
 
 
 
@@ -200,6 +201,7 @@ private: System::Windows::Forms::ToolStripMenuItem^ SubjectByGroupToolStripMenuI
 			this->textBoxAddress = (gcnew System::Windows::Forms::TextBox());
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->textBoxRecordBook = (gcnew System::Windows::Forms::TextBox());
+			this->buttonUpdateGroupList = (gcnew System::Windows::Forms::Button());
 			this->menuStrip1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewStudent))->BeginInit();
 			this->SuspendLayout();
@@ -603,11 +605,25 @@ private: System::Windows::Forms::ToolStripMenuItem^ SubjectByGroupToolStripMenuI
 			this->textBoxRecordBook->Size = System::Drawing::Size(121, 23);
 			this->textBoxRecordBook->TabIndex = 19;
 			// 
+			// buttonUpdateGroupList
+			// 
+			this->buttonUpdateGroupList->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
+			this->buttonUpdateGroupList->Font = (gcnew System::Drawing::Font(L"Roboto", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->buttonUpdateGroupList->Location = System::Drawing::Point(70, 334);
+			this->buttonUpdateGroupList->Name = L"buttonUpdateGroupList";
+			this->buttonUpdateGroupList->Size = System::Drawing::Size(168, 29);
+			this->buttonUpdateGroupList->TabIndex = 23;
+			this->buttonUpdateGroupList->Text = L"Обновить список групп";
+			this->buttonUpdateGroupList->UseVisualStyleBackColor = true;
+			this->buttonUpdateGroupList->Click += gcnew System::EventHandler(this, &MyFormStudent::buttonUpdateGroupList_Click);
+			// 
 			// MyFormStudent
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(912, 448);
+			this->Controls->Add(this->buttonUpdateGroupList);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->textBoxAddress);
 			this->Controls->Add(this->label8);
@@ -668,5 +684,6 @@ private: System::Void SubjectListToolStripMenuItem_Click(System::Object^ sender,
 private: System::Void dataGridViewStudent_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
 private: System::Void ClearTextBox();
 private: System::Void domainUpDownGroup_SelectedItemChanged(System::Object^ sender, System::EventArgs^ e);
+private: System::Void buttonUpdateGroupList_Click(System::Object^ sender, System::EventArgs^ e);
 };
 }
