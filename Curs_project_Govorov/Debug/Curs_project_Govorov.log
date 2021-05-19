@@ -1,1 +1,22 @@
-﻿  Curs_project_Govorov.vcxproj -> C:\Users\Александр\source\repos\Curs_project_Govorov\Debug\University.exe
+﻿  Input_mark.cpp
+C:\Users\Александр\source\repos\Curs_project_Govorov\Curs_project_Govorov\Input_mark.cpp(228,26): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Александр\source\repos\Curs_project_Govorov\Curs_project_Govorov\Input_mark.cpp(283,26): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Александр\source\repos\Curs_project_Govorov\Curs_project_Govorov\Input_mark.cpp(324,26): warning C4018: <: несоответствие типов со знаком и без знака
+  Student.cpp
+  Subject_avg_mark.cpp
+C:\Users\Александр\source\repos\Curs_project_Govorov\Curs_project_Govorov\Subject_avg_mark.cpp(55,26): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Александр\source\repos\Curs_project_Govorov\Curs_project_Govorov\Subject_avg_mark.cpp(61,26): warning C4018: <: несоответствие типов со знаком и без знака
+  Создание кода...
+  Chair.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
+.NETFramework,Version=v4.7.2.AssemblyAttributes.obj : warning LNK4099: "vc142.pdb" PDB не найден с ".NETFramework,Version=v4.7.2.AssemblyAttributes.obj" или на "C:\Users\Александр\source\repos\Curs_project_Govorov\Debug\vc142.pdb"; компоновка объекта выполняется как при отсутствии отладочных данных
+Unsuccessful_mark.obj : warning LNK4099: "vc142.pdb" PDB не найден с "Unsuccessful_mark.obj" или на "C:\Users\Александр\source\repos\Curs_project_Govorov\Debug\vc142.pdb"; компоновка объекта выполняется как при отсутствии отладочных данных
+SubjectList.obj : warning LNK4099: "vc142.pdb" PDB не найден с "SubjectList.obj" или на "C:\Users\Александр\source\repos\Curs_project_Govorov\Debug\vc142.pdb"; компоновка объекта выполняется как при отсутствии отладочных данных
+Subject.obj : warning LNK4099: "" PDB не найден с "Subject.obj" или на ""; компоновка объекта выполняется как при отсутствии отладочных данных
+Source.obj : warning LNK4099: "vc142.pdb" PDB не найден с "Source.obj" или на "C:\Users\Александр\source\repos\Curs_project_Govorov\Debug\vc142.pdb"; компоновка объекта выполняется как при отсутствии отладочных данных
+Student_grant.obj : warning LNK4099: "vc142.pdb" PDB не найден с "Student_grant.obj" или на "C:\Users\Александр\source\repos\Curs_project_Govorov\Debug\vc142.pdb"; компоновка объекта выполняется как при отсутствии отладочных данных
+Specialties.obj : warning LNK4099: "vc142.pdb" PDB не найден с "Specialties.obj" или на "C:\Users\Александр\source\repos\Curs_project_Govorov\Debug\vc142.pdb"; компоновка объекта выполняется как при отсутствии отладочных данных
+Group_student.obj : warning LNK4099: "vc142.pdb" PDB не найден с "Group_student.obj" или на "C:\Users\Александр\source\repos\Curs_project_Govorov\Debug\vc142.pdb"; компоновка объекта выполняется как при отсутствии отладочных данных
+Group_avg_mark.obj : warning LNK4099: "vc142.pdb" PDB не найден с "Group_avg_mark.obj" или на "C:\Users\Александр\source\repos\Curs_project_Govorov\Debug\vc142.pdb"; компоновка объекта выполняется как при отсутствии отладочных данных
+Faculties.obj : warning LNK4099: "vc142.pdb" PDB не найден с "Faculties.obj" или на "C:\Users\Александр\source\repos\Curs_project_Govorov\Debug\vc142.pdb"; компоновка объекта выполняется как при отсутствии отладочных данных
+Chair.obj : warning LNK4099: "vc142.pdb" PDB не найден с "Chair.obj" или на "C:\Users\Александр\source\repos\Curs_project_Govorov\Debug\vc142.pdb"; компоновка объекта выполняется как при отсутствии отладочных данных
+  Curs_project_Govorov.vcxproj -> C:\Users\Александр\source\repos\Curs_project_Govorov\Debug\University.exe

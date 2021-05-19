@@ -76,13 +76,13 @@ namespace CursprojectGovorov {
 		void InitializeComponent(void)
 		{
 			this->dataGridViewStudent = (gcnew System::Windows::Forms::DataGridView());
-			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->domainUpDownGroup = (gcnew System::Windows::Forms::DomainUpDown());
 			this->id = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Name_student = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Surname_student = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Group = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->UnsucsessfulSubject = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->domainUpDownGroup = (gcnew System::Windows::Forms::DomainUpDown());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewStudent))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -101,25 +101,6 @@ namespace CursprojectGovorov {
 			this->dataGridViewStudent->ReadOnly = true;
 			this->dataGridViewStudent->Size = System::Drawing::Size(594, 391);
 			this->dataGridViewStudent->TabIndex = 0;
-			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(12, 28);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(55, 18);
-			this->label1->TabIndex = 4;
-			this->label1->Text = L"Группа";
-			// 
-			// domainUpDownGroup
-			// 
-			this->domainUpDownGroup->Location = System::Drawing::Point(84, 26);
-			this->domainUpDownGroup->Name = L"domainUpDownGroup";
-			this->domainUpDownGroup->ReadOnly = true;
-			this->domainUpDownGroup->Size = System::Drawing::Size(120, 23);
-			this->domainUpDownGroup->Sorted = true;
-			this->domainUpDownGroup->TabIndex = 3;
-			this->domainUpDownGroup->Text = L"Все";
 			// 
 			// id
 			// 
@@ -152,6 +133,27 @@ namespace CursprojectGovorov {
 			this->UnsucsessfulSubject->Name = L"UnsucsessfulSubject";
 			this->UnsucsessfulSubject->ReadOnly = true;
 			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(12, 28);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(55, 18);
+			this->label1->TabIndex = 4;
+			this->label1->Text = L"Группа";
+			// 
+			// domainUpDownGroup
+			// 
+			this->domainUpDownGroup->Items->Add(L"Все");
+			this->domainUpDownGroup->Location = System::Drawing::Point(84, 26);
+			this->domainUpDownGroup->Name = L"domainUpDownGroup";
+			this->domainUpDownGroup->ReadOnly = true;
+			this->domainUpDownGroup->Size = System::Drawing::Size(120, 23);
+			this->domainUpDownGroup->Sorted = true;
+			this->domainUpDownGroup->TabIndex = 3;
+			this->domainUpDownGroup->Text = L"Все";
+			this->domainUpDownGroup->SelectedItemChanged += gcnew System::EventHandler(this, &MyFormStudentUnsucsessful::domainUpDownGroup_SelectedItemChanged);
+			// 
 			// MyFormStudentUnsucsessful
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 18);
@@ -168,6 +170,7 @@ namespace CursprojectGovorov {
 			this->ShowIcon = false;
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Неуспевающие студенты";
+			this->Load += gcnew System::EventHandler(this, &MyFormStudentUnsucsessful::MyFormStudentUnsucsessful_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewStudent))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -175,5 +178,7 @@ namespace CursprojectGovorov {
 		}
 #pragma endregion
 
-	};
+private: System::Void MyFormStudentUnsucsessful_Load(System::Object^ sender, System::EventArgs^ e);
+private: System::Void domainUpDownGroup_SelectedItemChanged(System::Object^ sender, System::EventArgs^ e);
+};
 }

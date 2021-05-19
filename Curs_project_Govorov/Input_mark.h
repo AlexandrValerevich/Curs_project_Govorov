@@ -76,12 +76,12 @@ namespace CursprojectGovorov {
 
 
 
-private: System::Windows::Forms::DataGridViewTextBoxColumn^ id;
-private: System::Windows::Forms::DataGridViewTextBoxColumn^ Name_student;
-private: System::Windows::Forms::DataGridViewTextBoxColumn^ Surname_student;
-private: System::Windows::Forms::DataGridViewTextBoxColumn^ Group;
-private: System::Windows::Forms::DataGridViewTextBoxColumn^ Subject;
-private: System::Windows::Forms::DataGridViewTextBoxColumn^ Mark;
+
+
+
+
+
+
 private: System::Windows::Forms::DomainUpDown^ domainUpDownSubject;
 
 private: System::Windows::Forms::Label^ label4;
@@ -90,9 +90,12 @@ private: System::Windows::Forms::DomainUpDown^ domainUpDownStudent;
 private: System::Windows::Forms::Label^ label2;
 private: System::Windows::Forms::Label^ label3;
 private: System::Windows::Forms::TextBox^ textBoxMark;
-private: System::Windows::Forms::Button^ button3;
-private: System::Windows::Forms::Button^ button2;
-private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ buttonChange;
+	private: System::Windows::Forms::Button^ buttonDelete;
+
+
+	private: System::Windows::Forms::Button^ buttonAdd;
+
 	private: System::Windows::Forms::MenuStrip^ menuStrip1;
 	private: System::Windows::Forms::ToolStripMenuItem^ StudentToolStripMenuItem;
 	private: System::Windows::Forms::ToolStripMenuItem^ ListStudentToolStripMenuItem;
@@ -114,6 +117,20 @@ private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::ToolStripMenuItem^ SubjectListToolStripMenuItem;
 
 	private: System::Windows::Forms::ToolStripMenuItem^ SubjectByGroupToolStripMenuItem;
+private: System::Windows::Forms::DomainUpDown^ domainUpDownRecording;
+
+private: System::Windows::Forms::Label^ label5;
+private: System::Windows::Forms::DomainUpDown^ domainUpDownSeasson;
+
+private: System::Windows::Forms::Label^ label7;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ id;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ Name_student;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ Surname_student;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ Group;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ Subject;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ Mark;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ Recording;
+private: System::Windows::Forms::DataGridViewTextBoxColumn^ Seasson;
 
 
 
@@ -137,6 +154,8 @@ private: System::Windows::Forms::Button^ button1;
 			this->Group = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Subject = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Mark = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Recording = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Seasson = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->textBoxId = (gcnew System::Windows::Forms::TextBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label6 = (gcnew System::Windows::Forms::Label());
@@ -147,9 +166,9 @@ private: System::Windows::Forms::Button^ button1;
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->textBoxMark = (gcnew System::Windows::Forms::TextBox());
-			this->button3 = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->buttonChange = (gcnew System::Windows::Forms::Button());
+			this->buttonDelete = (gcnew System::Windows::Forms::Button());
+			this->buttonAdd = (gcnew System::Windows::Forms::Button());
 			this->menuStrip1 = (gcnew System::Windows::Forms::MenuStrip());
 			this->StudentToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ListStudentToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
@@ -170,6 +189,10 @@ private: System::Windows::Forms::Button^ button1;
 			this->SubjectListToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->SubjectByGroupToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->ExitToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->domainUpDownRecording = (gcnew System::Windows::Forms::DomainUpDown());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->domainUpDownSeasson = (gcnew System::Windows::Forms::DomainUpDown());
+			this->label7 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewStudent))->BeginInit();
 			this->menuStrip1->SuspendLayout();
 			this->SuspendLayout();
@@ -177,17 +200,16 @@ private: System::Windows::Forms::Button^ button1;
 			// dataGridViewStudent
 			// 
 			this->dataGridViewStudent->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
-			this->dataGridViewStudent->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
 			this->dataGridViewStudent->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridViewStudent->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(6) {
+			this->dataGridViewStudent->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(8) {
 				this->id,
-					this->Name_student, this->Surname_student, this->Group, this->Subject, this->Mark
+					this->Name_student, this->Surname_student, this->Group, this->Subject, this->Mark, this->Recording, this->Seasson
 			});
 			this->dataGridViewStudent->Location = System::Drawing::Point(342, 36);
 			this->dataGridViewStudent->Name = L"dataGridViewStudent";
 			this->dataGridViewStudent->Size = System::Drawing::Size(558, 298);
 			this->dataGridViewStudent->TabIndex = 1;
-			this->dataGridViewStudent->Enter += gcnew System::EventHandler(this, &MyFormInputMarks::SelectDataGridItem);
+			this->dataGridViewStudent->RowEnter += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyFormInputMarks::dataGridViewStudent_RowEnter);
 			// 
 			// id
 			// 
@@ -199,26 +221,43 @@ private: System::Windows::Forms::Button^ button1;
 			// 
 			this->Name_student->HeaderText = L"Имя";
 			this->Name_student->Name = L"Name_student";
+			this->Name_student->Width = 74;
 			// 
 			// Surname_student
 			// 
 			this->Surname_student->HeaderText = L"Фамилия";
 			this->Surname_student->Name = L"Surname_student";
+			this->Surname_student->Width = 73;
 			// 
 			// Group
 			// 
 			this->Group->HeaderText = L"Группа";
 			this->Group->Name = L"Group";
+			this->Group->Width = 74;
 			// 
 			// Subject
 			// 
 			this->Subject->HeaderText = L"Предмет";
 			this->Subject->Name = L"Subject";
+			this->Subject->Width = 73;
 			// 
 			// Mark
 			// 
 			this->Mark->HeaderText = L"Оценка";
 			this->Mark->Name = L"Mark";
+			this->Mark->Width = 74;
+			// 
+			// Recording
+			// 
+			this->Recording->HeaderText = L"Отчетность";
+			this->Recording->Name = L"Recording";
+			this->Recording->Width = 73;
+			// 
+			// Seasson
+			// 
+			this->Seasson->HeaderText = L"Сезон";
+			this->Seasson->Name = L"Seasson";
+			this->Seasson->Width = 74;
 			// 
 			// textBoxId
 			// 
@@ -261,9 +300,9 @@ private: System::Windows::Forms::Button^ button1;
 			this->domainUpDownGroup->Name = L"domainUpDownGroup";
 			this->domainUpDownGroup->ReadOnly = true;
 			this->domainUpDownGroup->Size = System::Drawing::Size(140, 23);
-			this->domainUpDownGroup->Sorted = true;
 			this->domainUpDownGroup->TabIndex = 18;
 			this->domainUpDownGroup->Text = L"Все";
+			this->domainUpDownGroup->SelectedItemChanged += gcnew System::EventHandler(this, &MyFormInputMarks::domainUpDownGroup_SelectedItemChanged);
 			// 
 			// domainUpDownSubject
 			// 
@@ -274,9 +313,9 @@ private: System::Windows::Forms::Button^ button1;
 			this->domainUpDownSubject->Name = L"domainUpDownSubject";
 			this->domainUpDownSubject->ReadOnly = true;
 			this->domainUpDownSubject->Size = System::Drawing::Size(140, 23);
-			this->domainUpDownSubject->Sorted = true;
 			this->domainUpDownSubject->TabIndex = 20;
 			this->domainUpDownSubject->Text = L"Все";
+			this->domainUpDownSubject->SelectedItemChanged += gcnew System::EventHandler(this, &MyFormInputMarks::domainUpDownSubject_SelectedItemChanged);
 			// 
 			// label4
 			// 
@@ -298,9 +337,9 @@ private: System::Windows::Forms::Button^ button1;
 			this->domainUpDownStudent->Name = L"domainUpDownStudent";
 			this->domainUpDownStudent->ReadOnly = true;
 			this->domainUpDownStudent->Size = System::Drawing::Size(140, 23);
-			this->domainUpDownStudent->Sorted = true;
 			this->domainUpDownStudent->TabIndex = 22;
 			this->domainUpDownStudent->Text = L"Все";
+			this->domainUpDownStudent->SelectedItemChanged += gcnew System::EventHandler(this, &MyFormInputMarks::domainUpDownStudent_SelectedItemChanged);
 			// 
 			// label2
 			// 
@@ -333,41 +372,44 @@ private: System::Windows::Forms::Button^ button1;
 			this->textBoxMark->Size = System::Drawing::Size(140, 23);
 			this->textBoxMark->TabIndex = 23;
 			// 
-			// button3
+			// buttonChange
 			// 
-			this->button3->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
-			this->button3->Font = (gcnew System::Drawing::Font(L"Roboto", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->buttonChange->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
+			this->buttonChange->Font = (gcnew System::Drawing::Font(L"Roboto", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->button3->Location = System::Drawing::Point(560, 367);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(115, 29);
-			this->button3->TabIndex = 27;
-			this->button3->Text = L"Изменить";
-			this->button3->UseVisualStyleBackColor = true;
+			this->buttonChange->Location = System::Drawing::Point(560, 367);
+			this->buttonChange->Name = L"buttonChange";
+			this->buttonChange->Size = System::Drawing::Size(115, 29);
+			this->buttonChange->TabIndex = 27;
+			this->buttonChange->Text = L"Изменить";
+			this->buttonChange->UseVisualStyleBackColor = true;
+			this->buttonChange->Click += gcnew System::EventHandler(this, &MyFormInputMarks::buttonChange_Click);
 			// 
-			// button2
+			// buttonDelete
 			// 
-			this->button2->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
-			this->button2->Font = (gcnew System::Drawing::Font(L"Roboto", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->buttonDelete->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
+			this->buttonDelete->Font = (gcnew System::Drawing::Font(L"Roboto", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->button2->Location = System::Drawing::Point(746, 367);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(115, 29);
-			this->button2->TabIndex = 26;
-			this->button2->Text = L"Удалить";
-			this->button2->UseVisualStyleBackColor = true;
+			this->buttonDelete->Location = System::Drawing::Point(746, 367);
+			this->buttonDelete->Name = L"buttonDelete";
+			this->buttonDelete->Size = System::Drawing::Size(115, 29);
+			this->buttonDelete->TabIndex = 26;
+			this->buttonDelete->Text = L"Удалить";
+			this->buttonDelete->UseVisualStyleBackColor = true;
+			this->buttonDelete->Click += gcnew System::EventHandler(this, &MyFormInputMarks::buttonDelete_Click);
 			// 
-			// button1
+			// buttonAdd
 			// 
-			this->button1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
-			this->button1->Font = (gcnew System::Drawing::Font(L"Roboto", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->buttonAdd->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
+			this->buttonAdd->Font = (gcnew System::Drawing::Font(L"Roboto", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->button1->Location = System::Drawing::Point(375, 367);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(115, 29);
-			this->button1->TabIndex = 25;
-			this->button1->Text = L"Добавить";
-			this->button1->UseVisualStyleBackColor = true;
+			this->buttonAdd->Location = System::Drawing::Point(375, 367);
+			this->buttonAdd->Name = L"buttonAdd";
+			this->buttonAdd->Size = System::Drawing::Size(115, 29);
+			this->buttonAdd->TabIndex = 25;
+			this->buttonAdd->Text = L"Добавить";
+			this->buttonAdd->UseVisualStyleBackColor = true;
+			this->buttonAdd->Click += gcnew System::EventHandler(this, &MyFormInputMarks::buttonAdd_Click);
 			// 
 			// menuStrip1
 			// 
@@ -470,28 +512,28 @@ private: System::Windows::Forms::Button^ button1;
 			// FacultiesToolStripMenuItem
 			// 
 			this->FacultiesToolStripMenuItem->Name = L"FacultiesToolStripMenuItem";
-			this->FacultiesToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->FacultiesToolStripMenuItem->Size = System::Drawing::Size(160, 22);
 			this->FacultiesToolStripMenuItem->Text = L"Факультеты";
 			this->FacultiesToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyFormInputMarks::FacultiesToolStripMenuItem_Click);
 			// 
 			// ChairToolStripMenuItem
 			// 
 			this->ChairToolStripMenuItem->Name = L"ChairToolStripMenuItem";
-			this->ChairToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->ChairToolStripMenuItem->Size = System::Drawing::Size(160, 22);
 			this->ChairToolStripMenuItem->Text = L"Кафедры";
 			this->ChairToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyFormInputMarks::ChairToolStripMenuItem_Click);
 			// 
 			// SpecialityToolStripMenuItem
 			// 
 			this->SpecialityToolStripMenuItem->Name = L"SpecialityToolStripMenuItem";
-			this->SpecialityToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->SpecialityToolStripMenuItem->Size = System::Drawing::Size(160, 22);
 			this->SpecialityToolStripMenuItem->Text = L"Специальности";
 			this->SpecialityToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyFormInputMarks::SpecialityToolStripMenuItem_Click);
 			// 
 			// GroupsToolStripMenuItem
 			// 
 			this->GroupsToolStripMenuItem->Name = L"GroupsToolStripMenuItem";
-			this->GroupsToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->GroupsToolStripMenuItem->Size = System::Drawing::Size(160, 22);
 			this->GroupsToolStripMenuItem->Text = L"Группы";
 			this->GroupsToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyFormInputMarks::GroupsToolStripMenuItem_Click);
 			// 
@@ -502,7 +544,7 @@ private: System::Windows::Forms::Button^ button1;
 					this->SubjectByGroupToolStripMenuItem
 			});
 			this->SubjectToolStripMenuItem->Name = L"SubjectToolStripMenuItem";
-			this->SubjectToolStripMenuItem->Size = System::Drawing::Size(180, 22);
+			this->SubjectToolStripMenuItem->Size = System::Drawing::Size(160, 22);
 			this->SubjectToolStripMenuItem->Text = L"Предметы";
 			// 
 			// SubjectListToolStripMenuItem
@@ -526,15 +568,67 @@ private: System::Windows::Forms::Button^ button1;
 			this->ExitToolStripMenuItem->Text = L"Выход";
 			this->ExitToolStripMenuItem->Click += gcnew System::EventHandler(this, &MyFormInputMarks::ExitToolStripMenuItem_Click);
 			// 
+			// domainUpDownRecording
+			// 
+			this->domainUpDownRecording->Font = (gcnew System::Drawing::Font(L"Montserrat", 9.749999F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->domainUpDownRecording->Items->Add(L"Зачет");
+			this->domainUpDownRecording->Items->Add(L"Сессия");
+			this->domainUpDownRecording->Location = System::Drawing::Point(142, 280);
+			this->domainUpDownRecording->Name = L"domainUpDownRecording";
+			this->domainUpDownRecording->ReadOnly = true;
+			this->domainUpDownRecording->Size = System::Drawing::Size(140, 23);
+			this->domainUpDownRecording->TabIndex = 30;
+			this->domainUpDownRecording->Text = L"Зачет";
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Montserrat", 9.749999F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label5->Location = System::Drawing::Point(14, 282);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(104, 18);
+			this->label5->TabIndex = 29;
+			this->label5->Text = L"Зачет / Сессия";
+			// 
+			// domainUpDownSeasson
+			// 
+			this->domainUpDownSeasson->Font = (gcnew System::Drawing::Font(L"Montserrat", 9.749999F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->domainUpDownSeasson->Items->Add(L"Зимняя");
+			this->domainUpDownSeasson->Items->Add(L"Летняя");
+			this->domainUpDownSeasson->Location = System::Drawing::Point(142, 311);
+			this->domainUpDownSeasson->Name = L"domainUpDownSeasson";
+			this->domainUpDownSeasson->ReadOnly = true;
+			this->domainUpDownSeasson->Size = System::Drawing::Size(140, 23);
+			this->domainUpDownSeasson->TabIndex = 32;
+			this->domainUpDownSeasson->Text = L"Зимняя";
+			// 
+			// label7
+			// 
+			this->label7->AutoSize = true;
+			this->label7->Font = (gcnew System::Drawing::Font(L"Montserrat", 9.749999F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label7->Location = System::Drawing::Point(14, 313);
+			this->label7->Name = L"label7";
+			this->label7->Size = System::Drawing::Size(119, 18);
+			this->label7->TabIndex = 31;
+			this->label7->Text = L"Зимняя / Летняя";
+			// 
 			// MyFormInputMarks
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(7, 15);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(912, 448);
+			this->Controls->Add(this->domainUpDownSeasson);
+			this->Controls->Add(this->label7);
+			this->Controls->Add(this->domainUpDownRecording);
+			this->Controls->Add(this->label5);
 			this->Controls->Add(this->menuStrip1);
-			this->Controls->Add(this->button3);
-			this->Controls->Add(this->button2);
-			this->Controls->Add(this->button1);
+			this->Controls->Add(this->buttonChange);
+			this->Controls->Add(this->buttonDelete);
+			this->Controls->Add(this->buttonAdd);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->textBoxMark);
 			this->Controls->Add(this->domainUpDownStudent);
@@ -565,14 +659,11 @@ private: System::Windows::Forms::Button^ button1;
 		}
 #pragma endregion
 
-	private: System::Void MyFormStudent_Load(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void SelectDataGridItem(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void buttonAdd_Click(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void buttonChange_Click(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void buttonDelete_Click(System::Object^ sender, System::EventArgs^ e);
-	private: System::Void MyFormInputMarks_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
-
-
+private: System::Void MyFormStudent_Load(System::Object^ sender, System::EventArgs^ e);
+private: System::Void buttonAdd_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void buttonChange_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void buttonDelete_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void MyFormInputMarks_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e);
 
 private: System::Void ListStudentToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void StudentGrantToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
@@ -587,8 +678,17 @@ private: System::Void ChairToolStripMenuItem_Click(System::Object^ sender, Syste
 private: System::Void SpecialityToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void GroupsToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void ExitToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
-
 private: System::Void SubjectByGroupToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void SubjectListToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
+
+private: System::Void dataGridViewStudent_RowEnter(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
+private: System::Void ClearTextBox();
+
+private: System::Void domainUpDownGroup_SelectedItemChanged(System::Object^ sender, System::EventArgs^ e);
+private: System::Void domainUpDownSubject_SelectedItemChanged(System::Object^ sender, System::EventArgs^ e);
+private: System::Void domainUpDownStudent_SelectedItemChanged(System::Object^ sender, System::EventArgs^ e);
+
+
+
 };
 }

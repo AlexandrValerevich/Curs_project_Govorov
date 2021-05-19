@@ -134,6 +134,7 @@ namespace CursprojectGovorov {
 			// 
 			// domainUpDownGroup
 			// 
+			this->domainUpDownGroup->Items->Add(L"Все");
 			this->domainUpDownGroup->Location = System::Drawing::Point(84, 26);
 			this->domainUpDownGroup->Name = L"domainUpDownGroup";
 			this->domainUpDownGroup->ReadOnly = true;
@@ -141,6 +142,7 @@ namespace CursprojectGovorov {
 			this->domainUpDownGroup->Sorted = true;
 			this->domainUpDownGroup->TabIndex = 1;
 			this->domainUpDownGroup->Text = L"Все";
+			this->domainUpDownGroup->SelectedItemChanged += gcnew System::EventHandler(this, &MyFormStudentAvgMark::domainUpDownGroup_SelectedItemChanged);
 			// 
 			// label1
 			// 
@@ -167,11 +169,14 @@ namespace CursprojectGovorov {
 			this->ShowIcon = false;
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Средний балл студентов";
+			this->Load += gcnew System::EventHandler(this, &MyFormStudentAvgMark::MyFormStudentAvgMark_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewStudent))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	};
+private: System::Void MyFormStudentAvgMark_Load(System::Object^ sender, System::EventArgs^ e);
+private: System::Void domainUpDownGroup_SelectedItemChanged(System::Object^ sender, System::EventArgs^ e);
+};
 }
