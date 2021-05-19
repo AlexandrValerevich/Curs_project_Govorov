@@ -11,6 +11,7 @@
   CursprojectGovorov.Subject.resources - Embedded, ContainedInManifestFile, 
   CursprojectGovorov.SubjectList.resources - Embedded, ContainedInManifestFile, 
   CursprojectGovorov.Subject_avg_mark.resources - Embedded, ContainedInManifestFile, 
+  CursprojectGovorov.Unsuccessful_mark.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
 Assembly University, Version=0.0.*, Culture=Инвариантный язык (Инвариантная страна): 
 	hash=SHA1, flags=PublicKey

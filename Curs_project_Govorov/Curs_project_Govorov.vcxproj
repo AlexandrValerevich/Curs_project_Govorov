@@ -221,6 +221,9 @@
     <EmbeddedResource Include="Subject_avg_mark.resx">
       <DependentUpon>Subject_avg_mark.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Unsuccessful_mark.resx">
+      <DependentUpon>Unsuccessful_mark.h</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

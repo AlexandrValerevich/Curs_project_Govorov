@@ -46,13 +46,18 @@ namespace CursprojectGovorov {
 			}
 
 		}
-	private: System::Windows::Forms::DataGridView^ dataGridViewStudent;
+	private: System::Windows::Forms::DataGridView^ dataGridViewSubject;
 	protected:
-	private: System::Windows::Forms::DomainUpDown^ domainUpDownGroup;
+
+	private: System::Windows::Forms::DomainUpDown^ domainUpDownSubject;
+	protected:
+
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ id;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Group;
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Avg_mark;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Subject;
+	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Unsuccessful_mark;
 
 
 
@@ -70,49 +75,30 @@ namespace CursprojectGovorov {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->dataGridViewStudent = (gcnew System::Windows::Forms::DataGridView());
-			this->domainUpDownGroup = (gcnew System::Windows::Forms::DomainUpDown());
-			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->dataGridViewSubject = (gcnew System::Windows::Forms::DataGridView());
 			this->id = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Group = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			this->Avg_mark = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewStudent))->BeginInit();
+			this->Subject = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->Unsuccessful_mark = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
+			this->domainUpDownSubject = (gcnew System::Windows::Forms::DomainUpDown());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewSubject))->BeginInit();
 			this->SuspendLayout();
 			// 
-			// dataGridViewStudent
+			// dataGridViewSubject
 			// 
-			this->dataGridViewStudent->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
-			this->dataGridViewStudent->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridViewStudent->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
+			this->dataGridViewSubject->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
+			this->dataGridViewSubject->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridViewSubject->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
 				this->id,
-					this->Group, this->Avg_mark
+					this->Subject, this->Unsuccessful_mark
 			});
-			this->dataGridViewStudent->Location = System::Drawing::Point(12, 77);
-			this->dataGridViewStudent->MaximumSize = System::Drawing::Size(594, 391);
-			this->dataGridViewStudent->MinimumSize = System::Drawing::Size(594, 391);
-			this->dataGridViewStudent->Name = L"dataGridViewStudent";
-			this->dataGridViewStudent->ReadOnly = true;
-			this->dataGridViewStudent->Size = System::Drawing::Size(594, 391);
-			this->dataGridViewStudent->TabIndex = 0;
-			// 
-			// domainUpDownGroup
-			// 
-			this->domainUpDownGroup->Location = System::Drawing::Point(86, 26);
-			this->domainUpDownGroup->Name = L"domainUpDownGroup";
-			this->domainUpDownGroup->ReadOnly = true;
-			this->domainUpDownGroup->Size = System::Drawing::Size(120, 23);
-			this->domainUpDownGroup->Sorted = true;
-			this->domainUpDownGroup->TabIndex = 1;
-			this->domainUpDownGroup->Text = L"Все";
-			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(12, 28);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(55, 18);
-			this->label1->TabIndex = 2;
-			this->label1->Text = L"Предмет";
+			this->dataGridViewSubject->Location = System::Drawing::Point(12, 77);
+			this->dataGridViewSubject->MaximumSize = System::Drawing::Size(594, 391);
+			this->dataGridViewSubject->MinimumSize = System::Drawing::Size(594, 391);
+			this->dataGridViewSubject->Name = L"dataGridViewSubject";
+			this->dataGridViewSubject->ReadOnly = true;
+			this->dataGridViewSubject->Size = System::Drawing::Size(594, 391);
+			this->dataGridViewSubject->TabIndex = 0;
 			// 
 			// id
 			// 
@@ -121,17 +107,38 @@ namespace CursprojectGovorov {
 			this->id->ReadOnly = true;
 			this->id->Visible = false;
 			// 
-			// Group
+			// Subject
 			// 
-			this->Group->HeaderText = L"Предмет";
-			this->Group->Name = L"Subject";
-			this->Group->ReadOnly = true;
+			this->Subject->HeaderText = L"Предмет";
+			this->Subject->Name = L"Subject";
+			this->Subject->ReadOnly = true;
 			// 
-			// Avg_mark
+			// Unsuccessful_mark
 			// 
-			this->Avg_mark->HeaderText = L"Неудовлетворительных оценок";
-			this->Avg_mark->Name = L"Unsuccessful_mark";
-			this->Avg_mark->ReadOnly = true;
+			this->Unsuccessful_mark->HeaderText = L"Неудовлетворительных оценок";
+			this->Unsuccessful_mark->Name = L"Unsuccessful_mark";
+			this->Unsuccessful_mark->ReadOnly = true;
+			// 
+			// domainUpDownSubject
+			// 
+			this->domainUpDownSubject->Items->Add(L"Все");
+			this->domainUpDownSubject->Location = System::Drawing::Point(86, 26);
+			this->domainUpDownSubject->Name = L"domainUpDownSubject";
+			this->domainUpDownSubject->ReadOnly = true;
+			this->domainUpDownSubject->Size = System::Drawing::Size(120, 23);
+			this->domainUpDownSubject->Sorted = true;
+			this->domainUpDownSubject->TabIndex = 1;
+			this->domainUpDownSubject->Text = L"Все";
+			this->domainUpDownSubject->SelectedItemChanged += gcnew System::EventHandler(this, &MyFormUnsuccessfuAvgMark::domainUpDownSubject_SelectedItemChanged);
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(12, 28);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(68, 18);
+			this->label1->TabIndex = 2;
+			this->label1->Text = L"Предмет";
 			// 
 			// MyFormUnsuccessfuAvgMark
 			// 
@@ -139,8 +146,8 @@ namespace CursprojectGovorov {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(618, 480);
 			this->Controls->Add(this->label1);
-			this->Controls->Add(this->domainUpDownGroup);
-			this->Controls->Add(this->dataGridViewStudent);
+			this->Controls->Add(this->domainUpDownSubject);
+			this->Controls->Add(this->dataGridViewSubject);
 			this->Font = (gcnew System::Drawing::Font(L"Montserrat", 9.749999F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::SizableToolWindow;
@@ -149,11 +156,14 @@ namespace CursprojectGovorov {
 			this->ShowIcon = false;
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Количество неудовлетворительных оценок по предмету";
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewStudent))->EndInit();
+			this->Load += gcnew System::EventHandler(this, &MyFormUnsuccessfuAvgMark::MyFormUnsuccessfuAvgMark_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewSubject))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	};
+private: System::Void MyFormUnsuccessfuAvgMark_Load(System::Object^ sender, System::EventArgs^ e);
+private: System::Void domainUpDownSubject_SelectedItemChanged(System::Object^ sender, System::EventArgs^ e);
+};
 }

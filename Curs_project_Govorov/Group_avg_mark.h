@@ -46,7 +46,9 @@ namespace CursprojectGovorov {
 			}
 
 		}
-	private: System::Windows::Forms::DataGridView^ dataGridViewStudent;
+	private: System::Windows::Forms::DataGridView^ dataGridViewGroup;
+	protected:
+
 	protected:
 
 
@@ -80,49 +82,27 @@ namespace CursprojectGovorov {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			this->dataGridViewStudent = (gcnew System::Windows::Forms::DataGridView());
-			this->domainUpDownGroup = (gcnew System::Windows::Forms::DomainUpDown());
-			this->label1 = (gcnew System::Windows::Forms::Label());
+			this->dataGridViewGroup = (gcnew System::Windows::Forms::DataGridView());
 			this->id = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Group = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->Avg_mark = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewStudent))->BeginInit();
+			this->domainUpDownGroup = (gcnew System::Windows::Forms::DomainUpDown());
+			this->label1 = (gcnew System::Windows::Forms::Label());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewGroup))->BeginInit();
 			this->SuspendLayout();
 			// 
-			// dataGridViewStudent
+			// dataGridViewGroup
 			// 
-			this->dataGridViewStudent->AutoSizeColumnsMode = System::Windows::Forms::DataGridViewAutoSizeColumnsMode::Fill;
-			this->dataGridViewStudent->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridViewStudent->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
+			this->dataGridViewGroup->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridViewGroup->Columns->AddRange(gcnew cli::array< System::Windows::Forms::DataGridViewColumn^  >(3) {
 				this->id,
 					this->Group, this->Avg_mark
 			});
-			this->dataGridViewStudent->Location = System::Drawing::Point(12, 77);
-			this->dataGridViewStudent->MaximumSize = System::Drawing::Size(594, 391);
-			this->dataGridViewStudent->MinimumSize = System::Drawing::Size(594, 391);
-			this->dataGridViewStudent->Name = L"dataGridViewStudent";
-			this->dataGridViewStudent->ReadOnly = true;
-			this->dataGridViewStudent->Size = System::Drawing::Size(594, 391);
-			this->dataGridViewStudent->TabIndex = 0;
-			// 
-			// domainUpDownGroup
-			// 
-			this->domainUpDownGroup->Location = System::Drawing::Point(86, 26);
-			this->domainUpDownGroup->Name = L"domainUpDownGroup";
-			this->domainUpDownGroup->ReadOnly = true;
-			this->domainUpDownGroup->Size = System::Drawing::Size(120, 23);
-			this->domainUpDownGroup->Sorted = true;
-			this->domainUpDownGroup->TabIndex = 1;
-			this->domainUpDownGroup->Text = L"Все";
-			// 
-			// label1
-			// 
-			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(12, 28);
-			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(55, 18);
-			this->label1->TabIndex = 2;
-			this->label1->Text = L"Группа";
+			this->dataGridViewGroup->Location = System::Drawing::Point(12, 77);
+			this->dataGridViewGroup->Name = L"dataGridViewGroup";
+			this->dataGridViewGroup->ReadOnly = true;
+			this->dataGridViewGroup->Size = System::Drawing::Size(594, 391);
+			this->dataGridViewGroup->TabIndex = 0;
 			// 
 			// id
 			// 
@@ -136,12 +116,35 @@ namespace CursprojectGovorov {
 			this->Group->HeaderText = L"Группа";
 			this->Group->Name = L"Group";
 			this->Group->ReadOnly = true;
+			this->Group->Width = 276;
 			// 
 			// Avg_mark
 			// 
 			this->Avg_mark->HeaderText = L"Средний балл";
 			this->Avg_mark->Name = L"Avg_mark";
 			this->Avg_mark->ReadOnly = true;
+			this->Avg_mark->Width = 275;
+			// 
+			// domainUpDownGroup
+			// 
+			this->domainUpDownGroup->Items->Add(L"Все");
+			this->domainUpDownGroup->Location = System::Drawing::Point(86, 26);
+			this->domainUpDownGroup->Name = L"domainUpDownGroup";
+			this->domainUpDownGroup->ReadOnly = true;
+			this->domainUpDownGroup->Size = System::Drawing::Size(120, 23);
+			this->domainUpDownGroup->Sorted = true;
+			this->domainUpDownGroup->TabIndex = 1;
+			this->domainUpDownGroup->Text = L"Все";
+			this->domainUpDownGroup->SelectedItemChanged += gcnew System::EventHandler(this, &MyFormGroupAvgMark::domainUpDownGroup_SelectedItemChanged);
+			// 
+			// label1
+			// 
+			this->label1->AutoSize = true;
+			this->label1->Location = System::Drawing::Point(12, 28);
+			this->label1->Name = L"label1";
+			this->label1->Size = System::Drawing::Size(55, 18);
+			this->label1->TabIndex = 2;
+			this->label1->Text = L"Группа";
 			// 
 			// MyFormGroupAvgMark
 			// 
@@ -150,7 +153,7 @@ namespace CursprojectGovorov {
 			this->ClientSize = System::Drawing::Size(618, 480);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->domainUpDownGroup);
-			this->Controls->Add(this->dataGridViewStudent);
+			this->Controls->Add(this->dataGridViewGroup);
 			this->Font = (gcnew System::Drawing::Font(L"Montserrat", 9.749999F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::SizableToolWindow;
@@ -159,11 +162,14 @@ namespace CursprojectGovorov {
 			this->ShowIcon = false;
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Средний балл по группам";
-			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewStudent))->EndInit();
+			this->Load += gcnew System::EventHandler(this, &MyFormGroupAvgMark::MyFormGroupAvgMark_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewGroup))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	};
+	private: System::Void domainUpDownGroup_SelectedItemChanged(System::Object^ sender, System::EventArgs^ e);
+private: System::Void MyFormGroupAvgMark_Load(System::Object^ sender, System::EventArgs^ e);
+};
 }
