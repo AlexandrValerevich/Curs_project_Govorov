@@ -169,29 +169,6 @@ System::Void CursprojectGovorov::MyFormStudent::MyFormStudent_Load(System::Objec
     return System::Void();
 }
 
-System::Void CursprojectGovorov::MyFormStudent::SelectDataGridItem(System::Object^ sender, System::EventArgs^ e)
-{
-    if (dataGridViewStudent->SelectedRows->Count == 0)
-        return;
-
-    int index = dataGridViewStudent->SelectedRows[0]->Index; //берем индекс первой выбранной строки
-
-    if (dataGridViewStudent->Rows->Count - 1 == index) //провер€ем чтобы это не юыла последн€€ строка
-    {
-        ClearTextBox(); //очистка полей ввода
-        return;
-    }
-
-    textBoxId->Text         = dataGridViewStudent->Rows[index]->Cells[0]->Value->ToString();
-    textBoxName->Text       = dataGridViewStudent->Rows[index]->Cells[1]->Value->ToString();
-    textBoxSurname->Text    = dataGridViewStudent->Rows[index]->Cells[2]->Value->ToString();
-    textBoxPatronymic->Text = dataGridViewStudent->Rows[index]->Cells[3]->Value->ToString();
-    domainUpDownGroup->Text = dataGridViewStudent->Rows[index]->Cells[4]->Value->ToString();
-    textBoxRecordBook->Text = dataGridViewStudent->Rows[index]->Cells[5]->Value->ToString();
-    textBoxAddress->Text    = dataGridViewStudent->Rows[index]->Cells[6]->Value->ToString();
-    return System::Void();
-}
-
 System::Void CursprojectGovorov::MyFormStudent::dataGridViewStudent_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e)
 {
     if (dataGridViewStudent->SelectedRows->Count != 0)
@@ -232,6 +209,9 @@ System::Void CursprojectGovorov::MyFormStudent::ClearTextBox()
 
 System::Void CursprojectGovorov::MyFormStudent::domainUpDownGroup_SelectedItemChanged(System::Object^ sender, System::EventArgs^ e)
 {
+    if (dataGridViewStudent->SelectedRows->Count != 0)
+        return;
+
     int index = dataGridViewStudent->SelectedCells[0]->RowIndex;
 
     auto rows = dataGridViewStudent->Rows;
@@ -279,6 +259,29 @@ System::Void CursprojectGovorov::MyFormStudent::buttonUpdateGroupList_Click(Syst
     return System::Void();
 }
 
+System::Void CursprojectGovorov::MyFormStudent::dataGridViewStudent_RowEnter(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e)
+{
+
+    if (dataGridViewStudent->SelectedRows->Count == 0)
+        return;
+
+    int index = dataGridViewStudent->SelectedRows[0]->Index; //берем индекс первой выбранной строки
+
+    if (dataGridViewStudent->Rows->Count - 1 == index) //провер€ем чтобы это не юыла последн€€ строка
+    {
+        ClearTextBox(); //очистка полей ввода
+        return;
+    }
+
+    textBoxId->Text = dataGridViewStudent->Rows[index]->Cells[0]->Value->ToString();
+    textBoxName->Text = dataGridViewStudent->Rows[index]->Cells[1]->Value->ToString();
+    textBoxSurname->Text = dataGridViewStudent->Rows[index]->Cells[2]->Value->ToString();
+    textBoxPatronymic->Text = dataGridViewStudent->Rows[index]->Cells[3]->Value->ToString();
+    domainUpDownGroup->Text = dataGridViewStudent->Rows[index]->Cells[4]->Value->ToString();
+    textBoxRecordBook->Text = dataGridViewStudent->Rows[index]->Cells[5]->Value->ToString();
+    textBoxAddress->Text = dataGridViewStudent->Rows[index]->Cells[6]->Value->ToString();
+    return System::Void();
+}
 
 /*------------------------------ Ќќѕ » ƒќЅј¬Ћ≈Ќ»я, ”ƒјЋ≈Ќ»я, »«ћ≈Ќ≈Ќ»я---------------------------------------------------*/
 
@@ -436,7 +439,7 @@ System::Void CursprojectGovorov::MyFormStudent::buttonChange_Click(System::Objec
         "student_name = " + student_name + ", " +
         "student_surname = " + student_surname + ", " +
         "student_patronymic = " + student_patronymic + ", " +
-        "studen_record_book = " + student_record_book + ", " +
+        "student_record_book = " + student_record_book + ", " +
         "student_address = " + student_address + ", " +
         "group_id = " + group_id;
     WHERE = "student_id = " + student_id;

@@ -55,6 +55,10 @@ namespace CursprojectGovorov {
 	private: System::Windows::Forms::DataGridViewTextBoxColumn^ Grant;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::DomainUpDown^ domainUpDownGroup;
+	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::TextBox^ textBoxGrant;
+
+	private: System::Windows::Forms::Button^ buttonChange;
 
 
 	private:
@@ -78,6 +82,9 @@ namespace CursprojectGovorov {
 			this->Grant = (gcnew System::Windows::Forms::DataGridViewTextBoxColumn());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->domainUpDownGroup = (gcnew System::Windows::Forms::DomainUpDown());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->textBoxGrant = (gcnew System::Windows::Forms::TextBox());
+			this->buttonChange = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewStudent))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -89,13 +96,13 @@ namespace CursprojectGovorov {
 				this->id,
 					this->Name_student, this->Surname_student, this->Group, this->Grant
 			});
-			this->dataGridViewStudent->Location = System::Drawing::Point(12, 77);
-			this->dataGridViewStudent->MaximumSize = System::Drawing::Size(594, 391);
-			this->dataGridViewStudent->MinimumSize = System::Drawing::Size(594, 391);
+			this->dataGridViewStudent->Location = System::Drawing::Point(12, 107);
 			this->dataGridViewStudent->Name = L"dataGridViewStudent";
 			this->dataGridViewStudent->ReadOnly = true;
-			this->dataGridViewStudent->Size = System::Drawing::Size(594, 391);
+			this->dataGridViewStudent->Size = System::Drawing::Size(594, 361);
 			this->dataGridViewStudent->TabIndex = 0;
+			this->dataGridViewStudent->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyFormStudentGrant::dataGridViewStudent_CellClick);
+			this->dataGridViewStudent->RowEnter += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyFormStudentGrant::dataGridViewStudent_RowEnter);
 			// 
 			// id
 			// 
@@ -131,7 +138,7 @@ namespace CursprojectGovorov {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(12, 28);
+			this->label1->Location = System::Drawing::Point(16, 23);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(55, 18);
 			this->label1->TabIndex = 4;
@@ -139,19 +146,57 @@ namespace CursprojectGovorov {
 			// 
 			// domainUpDownGroup
 			// 
-			this->domainUpDownGroup->Location = System::Drawing::Point(84, 26);
+			this->domainUpDownGroup->Items->Add(L"Все");
+			this->domainUpDownGroup->Location = System::Drawing::Point(108, 21);
 			this->domainUpDownGroup->Name = L"domainUpDownGroup";
 			this->domainUpDownGroup->ReadOnly = true;
 			this->domainUpDownGroup->Size = System::Drawing::Size(120, 23);
 			this->domainUpDownGroup->Sorted = true;
 			this->domainUpDownGroup->TabIndex = 3;
 			this->domainUpDownGroup->Text = L"Все";
+			this->domainUpDownGroup->SelectedItemChanged += gcnew System::EventHandler(this, &MyFormStudentGrant::domainUpDownGroup_SelectedItemChanged);
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Montserrat", 9.749999F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label2->Location = System::Drawing::Point(16, 68);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(86, 18);
+			this->label2->TabIndex = 10;
+			this->label2->Text = L" Стипендия";
+			// 
+			// textBoxGrant
+			// 
+			this->textBoxGrant->Font = (gcnew System::Drawing::Font(L"Montserrat", 9.749999F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->textBoxGrant->Location = System::Drawing::Point(108, 65);
+			this->textBoxGrant->Name = L"textBoxGrant";
+			this->textBoxGrant->Size = System::Drawing::Size(121, 23);
+			this->textBoxGrant->TabIndex = 9;
+			// 
+			// buttonChange
+			// 
+			this->buttonChange->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((System::Windows::Forms::AnchorStyles::Bottom | System::Windows::Forms::AnchorStyles::Right));
+			this->buttonChange->Font = (gcnew System::Drawing::Font(L"Roboto", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->buttonChange->Location = System::Drawing::Point(390, 57);
+			this->buttonChange->Name = L"buttonChange";
+			this->buttonChange->Size = System::Drawing::Size(115, 29);
+			this->buttonChange->TabIndex = 11;
+			this->buttonChange->Text = L"Изменить";
+			this->buttonChange->UseVisualStyleBackColor = true;
+			this->buttonChange->Click += gcnew System::EventHandler(this, &MyFormStudentGrant::buttonChange_Click);
 			// 
 			// MyFormStudentGrant
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 18);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(618, 480);
+			this->Controls->Add(this->buttonChange);
+			this->Controls->Add(this->label2);
+			this->Controls->Add(this->textBoxGrant);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->domainUpDownGroup);
 			this->Controls->Add(this->dataGridViewStudent);
@@ -163,12 +208,18 @@ namespace CursprojectGovorov {
 			this->ShowIcon = false;
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Размер стипендии студентов";
+			this->Load += gcnew System::EventHandler(this, &MyFormStudentGrant::MyFormStudentGrant_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewStudent))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-
+private: System::Void MyFormStudentGrant_Load(System::Object^ sender, System::EventArgs^ e);
+private: System::Void buttonChange_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void domainUpDownGroup_SelectedItemChanged(System::Object^ sender, System::EventArgs^ e);
+private: System::Void dataGridViewStudent_CellClick(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
+private: System::Void dataGridViewStudent_RowEnter(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
+private: System::Void ClearTextBox();
 };
 }

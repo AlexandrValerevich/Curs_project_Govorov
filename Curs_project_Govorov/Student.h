@@ -375,8 +375,7 @@ private: System::Windows::Forms::Button^ buttonUpdateGroupList;
 			this->dataGridViewStudent->Name = L"dataGridViewStudent";
 			this->dataGridViewStudent->Size = System::Drawing::Size(558, 298);
 			this->dataGridViewStudent->TabIndex = 1;
-			this->dataGridViewStudent->CellClick += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyFormStudent::dataGridViewStudent_CellClick);
-			this->dataGridViewStudent->Enter += gcnew System::EventHandler(this, &MyFormStudent::SelectDataGridItem);
+			this->dataGridViewStudent->RowEnter += gcnew System::Windows::Forms::DataGridViewCellEventHandler(this, &MyFormStudent::dataGridViewStudent_RowEnter);
 			// 
 			// id
 			// 
@@ -674,7 +673,6 @@ private: System::Void SpecialityToolStripMenuItem_Click(System::Object^ sender, 
 private: System::Void GroupsToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void ExitToolStripMenuItem_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void MyFormStudent_Load(System::Object^ sender, System::EventArgs^ e);
-private: System::Void SelectDataGridItem(System::Object^ sender, System::EventArgs^ e);
 private: System::Void buttonAdd_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void buttonChange_Click(System::Object^ sender, System::EventArgs^ e);
 private: System::Void buttonDelete_Click(System::Object^ sender, System::EventArgs^ e);
@@ -685,5 +683,6 @@ private: System::Void dataGridViewStudent_CellClick(System::Object^ sender, Syst
 private: System::Void ClearTextBox();
 private: System::Void domainUpDownGroup_SelectedItemChanged(System::Object^ sender, System::EventArgs^ e);
 private: System::Void buttonUpdateGroupList_Click(System::Object^ sender, System::EventArgs^ e);
+private: System::Void dataGridViewStudent_RowEnter(System::Object^ sender, System::Windows::Forms::DataGridViewCellEventArgs^ e);
 };
 }
