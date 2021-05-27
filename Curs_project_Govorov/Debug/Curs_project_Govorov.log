@@ -1,12 +1,6 @@
-﻿  Input_mark.cpp
-C:\Users\Александр\source\repos\Curs_project_Govorov\Curs_project_Govorov\Input_mark.cpp(228,26): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Александр\source\repos\Curs_project_Govorov\Curs_project_Govorov\Input_mark.cpp(283,26): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\Александр\source\repos\Curs_project_Govorov\Curs_project_Govorov\Input_mark.cpp(324,26): warning C4018: <: несоответствие типов со знаком и без знака
-  Student.cpp
-  Unsuccessful_mark.cpp
+﻿  Unsuccessful_mark.cpp
 C:\Users\Александр\source\repos\Curs_project_Govorov\Curs_project_Govorov\Unsuccessful_mark.cpp(57,26): warning C4018: <: несоответствие типов со знаком и без знака
 C:\Users\Александр\source\repos\Curs_project_Govorov\Curs_project_Govorov\Unsuccessful_mark.cpp(63,26): warning C4018: <: несоответствие типов со знаком и без знака
-  Создание кода...
   Chair.obj : обнаружен модуль MSIL; для MSIL последовательная компоновка отключена; выполняется полная компоновка
 .NETFramework,Version=v4.7.2.AssemblyAttributes.obj : warning LNK4099: "vc142.pdb" PDB не найден с ".NETFramework,Version=v4.7.2.AssemblyAttributes.obj" или на "C:\Users\Александр\source\repos\Curs_project_Govorov\Debug\vc142.pdb"; компоновка объекта выполняется как при отсутствии отладочных данных
 SubjectList.obj : warning LNK4099: "vc142.pdb" PDB не найден с "SubjectList.obj" или на "C:\Users\Александр\source\repos\Curs_project_Govorov\Debug\vc142.pdb"; компоновка объекта выполняется как при отсутствии отладочных данных
